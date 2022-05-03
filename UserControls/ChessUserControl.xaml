@@ -1,0 +1,202 @@
+﻿<UserControl x:Class="Chess.UserControls.ChessUserControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chess.UserControls"
+             mc:Ignorable="d" 
+             d:DesignWidth="500" d:DesignHeight="500"
+             FontSize="16" Loaded="UserControl_Loaded">
+    
+    <Grid>
+        
+        <!--StartMenu-->
+        <Grid Name="StartMenu" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Fill="Black" Grid.ColumnSpan="3" Grid.RowSpan="7"/>
+
+            <Menu Name="NewMenu" Grid.Row="1" Grid.Column="1">
+                <MenuItem Header="_New Game" Height="50" Width="130" FontSize="15">
+                    <MenuItem Header="_Pl vs Pl" Click="NewGame_Click"/>
+                    <MenuItem Header="_Pl vs Bot" Click="NewGameBot_Click"/>
+                </MenuItem>
+            </Menu>
+            <Menu Name="LoadMenu" Grid.Row="3" Grid.Column="1">
+                <MenuItem Header="_Load" Click="Load_Click" Height="50" Width="130" FontSize="15"/>
+            </Menu>
+            <Menu Name="ReplayMenu" Grid.Row="5" Grid.Column="1" >
+                <MenuItem Header="_Replay" Click="ReplayLoad_Click" Height="50" Width="130" FontSize="15" />
+            </Menu>
+        </Grid>
+        
+
+        <!-- Chessboard + letters + black border + menu + right bar -->
+        <Grid Name="mainBoardGrid"  Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="Black" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+
+            <!-- Letters, numbers -->
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="A" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Text="B" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="1"/>
+                <TextBlock Text="C" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="2"/>
+                <TextBlock Text="D" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="3"/>
+                <TextBlock Text="E" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="4"/>
+                <TextBlock Text="F" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="5"/>
+                <TextBlock Text="G" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="6"/>
+                <TextBlock Text="H" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="7"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="A" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Text="B" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="1"/>
+                <TextBlock Text="C" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="2"/>
+                <TextBlock Text="D" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="3"/>
+                <TextBlock Text="E" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="4"/>
+                <TextBlock Text="F" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="5"/>
+                <TextBlock Text="G" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="6"/>
+                <TextBlock Text="H" Foreground="White" FontSize="11.5" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="7"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="8" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="7" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"/>
+                <TextBlock Text="6" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"/>
+                <TextBlock Text="5" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3"/>
+                <TextBlock Text="4" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4"/>
+                <TextBlock Text="3" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5"/>
+                <TextBlock Text="2" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="6"/>
+                <TextBlock Text="1" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="7"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="8" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="7" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"/>
+                <TextBlock Text="6" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"/>
+                <TextBlock Text="5" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3"/>
+                <TextBlock Text="4" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4"/>
+                <TextBlock Text="3" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="5"/>
+                <TextBlock Text="2" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="6"/>
+                <TextBlock Text="1" Foreground="White" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="7"/>
+            </Grid>
+
+            <!-- Chessboard -->
+            <Grid Name="grid" Grid.Row="2" Grid.Column="1" PreviewMouseLeftButtonDown="grid_PreviewMouseLeftButtonDown">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <Menu Name="GameMenu" Grid.Row="0" Grid.ColumnSpan="3">
+                <MenuItem Header="_Save" Click="Save_Click"/>
+                <MenuItem Header="_Undo" Click="Undo_Click"/>
+                <MenuItem Header="_Exit" Click="Exit_Click"/>
+                <MenuItem Header="_Replay" Click="ReplayCurrent_Click"/>
+            </Menu>
+
+            <Menu Name="EndReplayMenu" Grid.Row="0" Grid.ColumnSpan="3" Visibility="Collapsed">
+                <MenuItem Header="_End Replay" Click="EndReplay_Click"/>
+            </Menu>
+            
+            <StatusBar Name="wnStatusBar" Grid.Row="4" Grid.ColumnSpan="3">
+                <StatusBarItem
+                HorizontalAlignment="Center">
+                    <TextBlock Name="wnTextBlock" 
+                           FontWeight="Bold">
+                     White's turn
+                    </TextBlock>
+                </StatusBarItem>
+            </StatusBar>
+
+            <StatusBar Name ="mStatusBar" Grid.Row="2" Grid.Column="1"
+                   Background="LightSkyBlue" Visibility="Hidden" Opacity="0.3"/>
+
+            <TextBlock Name ="mTextBlock" Grid.Row="2" Grid.Column="1"
+                   Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    FontSize="20" FontWeight="Bold" >
+                    White won
+            </TextBlock>
+
+        </Grid>
+    </Grid>
+</UserControl>
