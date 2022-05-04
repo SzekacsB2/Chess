@@ -20,9 +20,6 @@ namespace Chess
             To = to;
         }
     }
-
-    //describes something btw
-
     class Bot
     {
         Game activeGame;
