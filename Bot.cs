@@ -12,12 +12,16 @@ namespace Chess
         public Coords From { get; }
         public Coords To { get; }
 
+
+
         public Move(Coords from, Coords to)
         {
             From = from;
             To = to;
         }
     }
+
+    //describes something btw
 
     class Bot
     {
