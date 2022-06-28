@@ -71,7 +71,7 @@ namespace Chess
                 if (ValidMove(situation, r2, c2, true)) moves.Add(new Coords(Convert.ToByte(r2), Convert.ToByte(c2)));
                 c2--;
                 r2--;
-                if (ValidMove(situation, r2, c2, false ,true)) moves.Add(new Coords(Convert.ToByte(r2), Convert.ToByte(c2)));
+                if (ValidMove(situation, r2, c2, false ,true) && CheckPieces(situation, isWhite, r2 + 1, c2) == 0) moves.Add(new Coords(Convert.ToByte(r2), Convert.ToByte(c2)));
             }
             else
             {
@@ -83,7 +83,7 @@ namespace Chess
                 if (ValidMove(situation, r2, c2, true)) moves.Add(new Coords(Convert.ToByte(r2), Convert.ToByte(c2)));
                 c2--;
                 r2++;
-                if (ValidMove(situation, r2, c2, false, true)) moves.Add(new Coords(Convert.ToByte(r2), Convert.ToByte(c2)));
+                if (ValidMove(situation, r2, c2, false, true) && CheckPieces(situation, isWhite, r2 - 1, c2) == 0) moves.Add(new Coords(Convert.ToByte(r2), Convert.ToByte(c2)));
             }
 
             return moves.ToArray();
