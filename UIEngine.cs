@@ -118,7 +118,7 @@ namespace Chess
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
-            saveFileDialog.FileName = "ChessGame  " + DateTime.Now.ToString();
+            saveFileDialog.FileName = "ChessGame  ";
             if (saveFileDialog.ShowDialog() == true)
                 File.AppendAllLines(saveFileDialog.FileName, lines);
         }

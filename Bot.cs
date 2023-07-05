@@ -83,7 +83,7 @@ namespace Chess
                 if (beta <= alpha) break;
             }
 
-
+            return bestMove;
             if (bestMoveList.Count != 1) changeBest(bestMoveList.ToArray());
             return bestMove;
         }
