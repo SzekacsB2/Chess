@@ -422,12 +422,10 @@ namespace Chess
                             break;
                         // Other pieces
                         default:
-                            #region Displays piece on square
                             Image img = GeneratePieceImage(activeGame.logicalBoard[row, column]);
                             ((Grid)(physicalBoard[row, column].Content)).Children.RemoveRange(0, 2);
                             ((Grid)(physicalBoard[row, column].Content)).Children.Add(new UIElement());
                             ((Grid)(physicalBoard[row, column].Content)).Children.Add(img);
-                            #endregion
                             break;
                     }
                 }
